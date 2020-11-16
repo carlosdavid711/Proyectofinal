@@ -115,12 +115,14 @@ class ProductoController extends Controller
 
      public function agregarCarrito($id)
     {
-    
-      $productos = Producto::all();
       $productoCarrito = Producto::find($id); 
-     
       session()->push('carrito', json_encode($productoCarrito));
-       
+      $productos = Producto::all();  
+      $total=0; 
+      foreach(session('carrito') as $elemento){
+        $total+= json_decode($elemento)->precio;
+      }
+      session(['total' => $total]);
        return view('admin.index', ['Productos'=> $productos]);
     }    
 }

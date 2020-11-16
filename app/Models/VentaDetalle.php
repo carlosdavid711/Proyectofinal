@@ -10,6 +10,10 @@ class VentaDetalle extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['venta_id', 'producto_id'];
+    protected $table = 'ventas_detalle';
+    public $timestamps = false;
+
 public function venta(){
         return $this->belongsTo(Venta::class);
     }
