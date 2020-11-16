@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearProductosTabla extends Migration
+class AddColumnRolToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CrearProductosTabla extends Migration
      */
     public function up()
     {
-    Schema::create('productos', function (Blueprint $table){
-      $table->id();
-      $table->string('nombre');
-      $table->float('precio');
-      $table->integer('disponibilidad');
-      });
-
-        //
+        Schema::table('users', function (Blueprint $table) {
+           
+           $table->string('rol'); 
+        });
     }
 
     /**
@@ -30,6 +26,8 @@ class CrearProductosTabla extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }
